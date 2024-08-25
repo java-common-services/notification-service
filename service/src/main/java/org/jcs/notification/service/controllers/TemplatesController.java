@@ -26,17 +26,7 @@ public class TemplatesController {
   @Autowired
   private TemplateService templateService;
 
-  @Autowired
-  private TemplateMapper templateMapper;
   Logger logger = LoggerFactory.getLogger(TemplatesController.class);
-
-  @GetMapping("/{id}")
-  public GetTemplateDto getById(
-      @PathVariable UUID id) {
-    GetTemplateDto template = templateService.getById(id);
-    logger.info("Got the template as: {}", template);
-    return template;
-  }
 
   @GetMapping()
   public Iterable<GetTemplateDto> getAll(
@@ -44,6 +34,14 @@ public class TemplatesController {
     Iterable<GetTemplateDto> templates = templateService.getAll(pageable);
     logger.info("Got the templates as: {}", templates);
     return templates;
+  }
+
+  @GetMapping("/{id}")
+  public GetTemplateDto getById(
+      @PathVariable UUID id) {
+    GetTemplateDto template = templateService.getById(id);
+    logger.info("Got the template as: {}", template);
+    return template;
   }
 
   @PostMapping

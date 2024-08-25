@@ -12,4 +12,5 @@ public class PostTemplateParameterDefinitionDto {
   private String name;
   private DataType dataType;
   private DataValidationRule dataValidationRule;
+  private boolean required;
 }

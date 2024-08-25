@@ -22,7 +22,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TemplateMapperImpl.class, TemplateParameterMapperImpl.class})
 class TemplateMapperTest {
 
