@@ -28,7 +28,7 @@ CREATE TABLE template_parameter (
 
 
 -- Template Rules Tables
-CREATE TABLE rule (
+CREATE TABLE template_rule (
     id VARCHAR(50) NOT NULL PRIMARY KEY,
     event_name VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
@@ -39,14 +39,15 @@ CREATE TABLE rule (
     UNIQUE (event_name)
 );
 
-CREATE TABLE rule_template_mapping (
-    rule_id VARCHAR(50) NOT NULL,
+-- Template rule with template mapping
+CREATE TABLE template_rule_template_mapping (
     template_id VARCHAR(50) NOT NULL,
+    template_rule_id VARCHAR(50) NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    PRIMARY KEY (rule_id, template_id),
-    FOREIGN KEY (rule_id) REFERENCES rule(id),
-    FOREIGN KEY (template_id) REFERENCES template(id)
+    PRIMARY KEY (template_id, template_rule_id),
+    FOREIGN KEY (template_id) REFERENCES template(id),
+    FOREIGN KEY (template_rule_id) REFERENCES template_rule(id)
 );
